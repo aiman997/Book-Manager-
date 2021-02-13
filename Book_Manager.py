@@ -1,12 +1,13 @@
 import sys
-from BookM import Book
-
+from Book_Class import Book
+from sqlite import DB
 # function to display menu to user
 def Menu():
     print("Welcome to Book Organizer")
     print("Press 0 to Exit")
     print("Press 1 to Enter New Book")
     print("Press 2 to Search Existing Book")
+    print("Press 3 to display Existing Book")
 
 # Function to add new book
 def addNew():
@@ -20,7 +21,10 @@ def addNew():
         else:
             print("Enter New Book Number")
             Bnum = int(input())
+            print("Enter Author Name")
+            Bauth = str(input())
             book.newbook(BName, Bnum)
+            db.addBook(Bnum, BName, Bauth)
 
 def exit():
     print("Exit")
@@ -30,12 +34,21 @@ def exit():
 def search():
     book = Book()
     while True:
-        print("Enter Book Name or Press q To Quit")
-        name = str(input())
-        if name == "q":
+        print("Enter Book Name/ID or Press q To Quit")
+        usr = str(input())
+        if usr == "q":
             break
         else:
-            book.searchName(name)
+            book.search(usr)
+
+def displayElements():
+    # file = open("books.txt")
+    # lines = file.readlines()
+    # for line in lines:
+    #     print(line)
+    # file.close()
+    db.printTable()
+
 
 def __init__():
     Menu()
@@ -53,7 +66,13 @@ def __init__():
             search()
             Menu()
             option = int(input())
+        elif option == 3:
+            displayElements()
+            Menu()
+            option = int(input())
         else:
-            print("Fuck U")
-
+            print("Option Invalid")
+            break
+db = DB()
+db.open()
 __init__()

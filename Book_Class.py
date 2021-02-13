@@ -26,22 +26,10 @@ class Book:
         f = file.write(filestr)
         file.close()
 
-    def searchName(self, name):
-        # file = open(self.filename, "a")
-        # for line in file:
-        #     print(line)
-        # file.close()
+    def search(self, x):
         with open('books.txt') as f:
             s = mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ)
-            if s.find(str.encode(name)) != -1:
+            if s.find(str.encode(x)) != -1:
                 print('true')
-                print(f"s: {s}")
-              # print("book name" "book ID")
             else:
                 print("This Book Does Not Exist")
-
-    def searchID(self, id):
-        file = open(self.filename, "a")
-        for line in file:
-            print(line)
-        file.close()

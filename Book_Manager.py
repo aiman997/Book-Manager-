@@ -1,18 +1,17 @@
 import sys
-from Book_Class import Book
 from sqlite import DB
-# function to display menu to user
+
 def Menu():
     print("Welcome to Book Organizer")
     print("Press 0 to Exit")
     print("Press 1 to Enter New Book")
     print("Press 2 to Search Existing Book")
     print("Press 3 to display Existing Book")
+    print("Press 4 to edit Existing Book")
 
-# Function to add new book
+
 def addNew():
     BName = ""
-    book = Book()
     while True:
         print("Enter New Book Name or (q) to quit ")
         BName = str(input())
@@ -23,7 +22,6 @@ def addNew():
             Bnum = int(input())
             print("Enter Author Name")
             Bauth = str(input())
-            book.newbook(BName, Bnum)
             db.addBook(Bnum, BName, Bauth)
 
 def exit():
@@ -32,22 +30,29 @@ def exit():
     sys.exit()
 
 def search():
-    book = Book()
     while True:
-        print("Enter Book Name/ID or Press q To Quit")
+        print("Enter Book Name/ID/Author or Press q To Quit")
         usr = str(input())
         if usr == "q":
             break
         else:
-            book.search(usr)
+            db.search(usr)
 
 def displayElements():
-    # file = open("books.txt")
-    # lines = file.readlines()
-    # for line in lines:
-    #     print(line)
-    # file.close()
     db.printTable()
+
+def edit():
+    while True:
+        print("Enter Book ID or Press 0 To Quit")
+        usr = int(input())
+        if usr == 0:
+            break
+        else:
+            print("Enter Updated Book Name")
+            Bname = str(input())
+            print("Enter Updated Author Name")
+            Bauth = str(input())
+            db.Update(usr, Bname, Bauth)
 
 
 def __init__():
@@ -70,9 +75,17 @@ def __init__():
             displayElements()
             Menu()
             option = int(input())
+        elif option == 4:
+            edit()
+            Menu()
+            option = int(input())
         else:
             print("Option Invalid")
             break
 db = DB()
 db.open()
+try:
+    db.createTable()
+except:
+    print("createTable exeption")
 __init__()

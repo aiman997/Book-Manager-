@@ -27,9 +27,21 @@ class DB:
 
     def printTable(self):
         cursor = self.c.execute("SELECT * from Books")
-        print(cursor)
         for row in cursor:
             print("ID = ", row[0])
             print("NAME = ", row[1])
-            print("Author = ", row[2])
+            print("AUTHOR = ", row[2])
             print(row,"\n")
+
+    def search(self,x):
+        cursor = self.c.execute(f"SELECT * FROM Books WHERE NAME = '{x}' OR ID = '{x}' OR AUTHOR = '{x}';")
+        for row in cursor:
+            print("ID = ", row[0])
+            print("NAME = ", row[1])
+            print("AUTHOR = ", row[2])
+
+    def Update(self, id, updName, updAuthor ):
+        try:
+            cursor = self.c.execute(f"UPDATE Books SET NAME = '{updName}', AUTHOR = '{updAuthor}' WHERE ID = '{id}';")
+        except:
+            print("An error occured during this Opration")

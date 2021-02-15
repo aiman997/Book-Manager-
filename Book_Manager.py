@@ -1,7 +1,6 @@
 import sys
-from Book_Class import Book
 from sqlite import DB
-# function to display menu to user
+
 def Menu():
     print("Welcome to Book Organizer")
     print("Press 0 to Exit")
@@ -9,10 +8,9 @@ def Menu():
     print("Press 2 to Search Existing Book")
     print("Press 3 to display Existing Book")
 
-# Function to add new book
 def addNew():
     BName = ""
-    book = Book()
+    # book = Book()
     while True:
         print("Enter New Book Name or (q) to quit ")
         BName = str(input())
@@ -28,7 +26,7 @@ def addNew():
 
 def exit():
     print("Exit")
-    print(f"Hi you system is {sys.version} your max size is {sys.maxsize} and finally the platform is {sys.platform}")
+    # print(f"Hi you system is {sys.version} your max size is {sys.maxsize} and finally the platform is {sys.platform}")
     sys.exit()
 
 def search():

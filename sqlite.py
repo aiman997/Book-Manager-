@@ -42,6 +42,6 @@ class DB:
 
     def Update(self, id, updName, updAuthor ):
         try:
-            cursor = self.c.execute(f"UPDATE Books SET NAME = '{updName}', AUTHOR = '{updAuthor}' WHERE ID = '{id}';")
+            cursor = self.c.execute(f"UPDATE Books SET NAME = '{updName}', AUTHOR = '{updAuthor}' WHERE BOOKID = '{id}';")
         except:
             print("An error occured during this Opration")

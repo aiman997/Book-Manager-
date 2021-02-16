@@ -1,0 +1,23 @@
+<html>
+   <body>
+
+      <form action = "{{ url_for('addrec') }}" method = "POST">
+         <h3>Book Information</h3>
+         Enter The ID Of The Book<br>
+         <input type = "text" name = "id" /></br>
+         Enter The Name Of The Book<br>
+         <input type = "text" name = "name" /></br>
+
+         Enter The Placement Of The Book<br>
+         <textarea name = "place" ></textarea><br>
+
+         Enter The Author's Name<br>
+         <input type = "text" name = "authname" /><br>
+
+         Enter year of publish<br>
+         <input type = "text" name = "publish" /><br>
+         <input type = "submit" value = "submit" /><br>
+      </form>
+
+   </body>
+</html>

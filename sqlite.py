@@ -64,6 +64,8 @@ class DB:
             print("An error occured during this Opration")
 
     def getRows(self):
-        self.c.execute("select * from FlaskBooks")
-        rows = self.c.fetchall();
+        self.con.row_factory = sqlite3.Row
+        cur = self.con.cursor()
+        cur.execute("select * from FlaskBooks")
+        rows = cur.fetchall();
         return rows

@@ -49,9 +49,13 @@ class DB:
     def search(self,x):
         cursor = self.c.execute(f"SELECT * FROM FlaskBooks WHERE id = '{x}' OR name = '{x}' OR place = '{x}' OR authname = '{x}' OR publish = '{x}';")
         for row in cursor:
-            print("ID = ", row[0])
-            print("NAME = ", row[1])
-            print("AUTHOR = ", row[2])
+            for row in cursor:
+                print("id = ", row[0])
+                print("name = ", row[1])
+                print("place = ", row[2])
+                print("authname = ", row[3])
+                print("publish = ", row[4])
+                print(row,"\n")
 
     def Update(self, name, place, authname, publish):
         try:
@@ -59,5 +63,7 @@ class DB:
         except:
             print("An error occured during this Opration")
 
-    # def displayList(self):
-    #     conn = sqlite3.connect(self.file, check_same_thread=False)
+    def getRows(self):
+        self.c.execute("select * from FlaskBooks")
+        rows = self.c.fetchall();
+        return rows

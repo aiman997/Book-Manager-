@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, request, render_template, make_response
 from sqlite import DB
-import sqlite3 as sql
-import sqlite3
+
+
 app = Flask(__name__)
 db=DB()
 
@@ -44,14 +44,7 @@ def addrec():
 
 @app.route('/list')
 def list():
-    #db.displayList()
-    con = sql.connect("datab.db")
-    con.row_factory = sql.Row
-
-    cur = con.cursor()
-    cur.execute("select * from FlaskBooks")
-
-    rows = cur.fetchall();
+    rows = db.getRows()
     return render_template("list.html",rows = rows)
 
 

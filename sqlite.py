@@ -58,3 +58,6 @@ class DB:
             cursor = self.c.execute("UPDATE FlaskBooks SET (name,place,authname,publish) VALUES (?, ?, ? ,?)", ( name, place, authname, publish))
         except:
             print("An error occured during this Opration")
+
+    # def displayList(self):
+    #     conn = sqlite3.connect(self.file, check_same_thread=False)

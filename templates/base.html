@@ -1,68 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Base</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </head>
-<body>
-  <!-- <nav class="navbar navbar-expand-lg .navbar-dark .primary-color"> -->
-  <nav class="navbar navbar-expand-lg .navbar-light .bg-light">
-    <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">BOOKORG</a>
-
-    <!-- Collapse button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
-      aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="basicExampleNav">
-
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href=addnew>Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-
-        <!-- Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+<!doctype html>
+<html>
+ {% block content %}
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Book Manager</title>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='' rel='stylesheet'>
+        <style>
+        body {
+          background-color: grey
+          }
+        </style>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+        <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
+        <script type='text/javascript'></script>
+    </head>
+    <body oncontextmenu='return false' class='snippet-body'>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <a class="navbar-brand" href="/" data-abc="true">BBBOOTSTRAP</a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active"> <a class="nav-link" href="/" data-abc="true">Home <span class="sr-only">(current)</span></a> </li>
+            <li class="nav-item"> <a class="nav-link" href=addnew data-abc="true">New Book</a> </li>
+            <li class="nav-item"> <a class="nav-link" href=list data-abc="true">All Books</a> </li>
+            <!-- <li class="nav-item"> <a class="nav-link" href="#" data-abc="true">Social</a> </li> -->
+        </ul>
+        <form class="form-inline my-2 my-lg-0" method="POST" action = "{{ url_for('search') }}">
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="Search">
           </div>
-        </li>
-
-      </ul>
-      <!-- Links -->
-
-      <form class="form-inline">
-        <div class="md-form my-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        </div>
-      </form>
+        </form>
     </div>
-    <!-- Collapsible content -->
-
-  </nav>
-  <!--/.Navbar-->
-
-
-  </body>
+</nav>
+    </body>
+{% endblock %}
 </html>

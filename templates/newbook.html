@@ -1,23 +1,30 @@
 <html>
-   <body>
 
-      <form action = "{{ url_for('addrec') }}" method = "POST">
+   <body>
+     {% extends "base.html" %}
+     {% block content %}
+         {{ super() }}
+
+      <div id="form-outline" style="max-width:500px;margin:auto;">
+        <form action = "{{ url_for('addrec') }}" method = "POST">
          <h3>Book Information</h3>
          Enter The ID Of The Book<br>
          <input type = "text" name = "id" /></br>
          Enter The Name Of The Book<br>
          <input type = "text" name = "name" /></br>
-
          Enter The Placement Of The Book<br>
-         <textarea name = "place" ></textarea><br>
-
+         <input type = "text" class="form-control" name = "place" /><br>
          Enter The Author's Name<br>
-         <input type = "text" name = "authname" /><br>
-
+         <input type = "text" class="form-control" name = "authname" /><br>
          Enter year of publish<br>
-         <input type = "text" name = "publish" /><br>
+         <input type = "text" class="form-control" name = "publish" /><br>
          <input type = "submit" value = "submit" /><br>
-      </form>
-
+      </form></div>
+      {% endblock %}
    </body>
+
 </html>
+<div class="form-outline form-white">
+  <input type="text" id="formWhite" class="form-control" />
+  <label class="form-label" for="formWhite">Example label</label>
+</div>

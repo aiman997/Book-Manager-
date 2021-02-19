@@ -20,9 +20,14 @@ def addNew():
         else:
             print("Enter New Book Number")
             Bnum = int(input())
+            print("Enter Placement Of Book")
+            Bplace = str(input())
             print("Enter Author Name")
             Bauth = str(input())
-            db.addBook(Bnum, BName, Bauth)
+            print("Enter Publish Date")
+            Bpub = str(input())
+
+            db.addBook(Bnum, BName, Bauth, Bplace, Bpub)
 
 def exit():
     print("Exit")

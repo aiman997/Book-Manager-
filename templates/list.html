@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  <title>Bootstrap Example</title>
+  <title>All Books</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -9,10 +9,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+  {% extends "base.html" %}
+  {% block content %}
+      {{ super() }}
 <div class="container">
-  <h2>Hover Rows</h2>
-  <p>The .table-hover class enables a hover state on table rows:</p>
+
   <table class="table table-hover">
     <thead>
       <tr class = "info">
@@ -30,7 +31,7 @@
             <td>{{row["name"]}}</td>
             <td>{{row["place"]}}</td>
             <td> {{ row["authname"]}}</td>
-            <td>{{row['publish']}}</td>
+            <td>{{row["publish"]}}</td>
          </tr>
       {% endfor %}
     </tbody>
@@ -41,5 +42,6 @@
   </div>
   <button type="button" class="btn btn-info" href="/"> <a href = "/"> Go back to 🏠 page </a></button>
 </div>
+  {% endblock %}
 </body>
 </html>

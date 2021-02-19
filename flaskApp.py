@@ -40,14 +40,21 @@ def addrec():
              msg = "[flask][addrec] Major failure"
         finally:
             db.printTable()
-        return render_template("result.html", msg = msg)
+    return render_template("result.html", msg = msg)
+
 
 @app.route('/list')
 def list():
     rows = db.getRows()
     return render_template("list.html",rows = rows)
 
-
+@app.route('/search', methods = ['POST', 'GET'])
+def search():
+    if request.method == "POST":
+        search_data = request.form['Search']
+        rows = db.search(str(search_data))
+#    return redirect(url_for('list'))
+    return render_template("list.html", rows= rows)
 if __name__ == '__main__':
     app.run(debug = True)
     db.close()

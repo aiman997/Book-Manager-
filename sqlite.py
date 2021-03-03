@@ -9,7 +9,7 @@ class DB:
             return cls.__instance
         return cls.__instance
 
-    def __init__(self, db_name='datab'):
+    def __init__(self, db_name='datab.db'):
         self.name = db_name
         # connect takes url, dbname, user-id, password
         self.con = self.connect()

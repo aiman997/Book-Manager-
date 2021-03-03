@@ -1,28 +1,38 @@
 import sqlite3
 
 class DB:
-    file = 'datab.db'
-    c = None
-    con = None
+    __instance = None
 
-    def open(self):
-      conn = sqlite3.connect(self.file, check_same_thread=False)
-      print("Opened database successfully")
-      self.c = conn.cursor()
-      self.con = conn
+    def __new__(cls, *args, **kwargs):
+        if cls.__instance is None:
+            cls.__instance = super().__new__(DB)
+            return cls.__instance
+        return cls.__instance
 
-    def close(self):
+    def __init__(self, db_name='datab'):
+        self.name = db_name
+        # connect takes url, dbname, user-id, password
+        self.con = self.connect()
+        self.c = self.con.cursor()
+
+    def connect(self):
+        try:
+            return sqlite3.connect(self.name, check_same_thread=False)
+        except sqlite3.Error as e:
+            pass
+
+    def __del__(self):
         self.c.close()
+        self.con.close()
         print("Connection to sql CLOSED")
 
     def createTable(self):
-      self.c.execute('''CREATE TABLE FlaskBooks
+      self.c.execute('''CREATE TABLE IF NOT EXISTS FlaskBooks
          (id INT PRIMARY KEY    NOT NULL,
          name           TEXT    NOT NULL,
          place          TEXT    NOT NULL,
          authname       TEXT    NOT NULL,
          publish        TEXT    NOT NULL);''')
-      print("Table created successfully")
 
     def addBook(self, id, name, place, authname, publish):
         print("Saving book")

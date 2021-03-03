@@ -5,11 +5,10 @@ from sqlite import DB
 app = Flask(__name__)
 db=DB()
 
-db.open()
 try:
     db.createTable()
-except:
-    print("Table already created before")
+except Exception as e:
+    print(e)
 
 @app.route('/')
 def base():
@@ -57,4 +56,3 @@ def search():
     return render_template("list.html", rows= rows)
 if __name__ == '__main__':
     app.run(debug = True)
-    db.close()
